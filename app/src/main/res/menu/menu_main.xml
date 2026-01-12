@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="work.pimin.boxmanage.MainActivity">
+    <item android:id="@+id/action_status"
+          android:title="@string/action_status"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+    <item android:id="@+id/action_restart_service"
+          android:title="@string/action_restart_service"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+    <item android:id="@+id/action_restart_tproxy"
+          android:title="@string/action_restart_tproxy"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+</menu>

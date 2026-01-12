@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Box Manage</string>
+    <!--菜单项-->
+    <string name="action_status">运行状态</string>
+    <string name="action_restart_service">重启服务</string>
+    <string name="action_restart_tproxy">重载透明代理</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">Box Manage</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+</resources>

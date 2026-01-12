@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".FirstFragment">
+
+    <!--<WebView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/web_content"
+    />-->
+
+    <!--调试-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="0dp">
+
+        <!--<EditText
+                android:layout_width="272dp"
+                android:layout_height="46dp"
+                android:inputType="text"
+                android:text="http://127.0.0.1:9090/ui"
+                android:ems="10"
+                android:id="@+id/input_url" tools:layout_editor_absoluteY="-11dp"
+                tools:layout_editor_absoluteX="-6dp"/>
+
+        <Button
+                android:text="确认"
+                android:layout_width="78dp"
+                android:layout_height="41dp" android:id="@+id/input_conform" tools:layout_editor_absoluteY="-6dp"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toEndOf="@+id/input_url"
+                app:layout_constraintHorizontal_bias="0.617"/>
+
+        <WebView android:layout_width="match_parent" android:layout_height="700dp" android:id="@+id/web_content"
+                 app:layout_constraintStart_toStartOf="parent"
+                 app:layout_constraintEnd_toEndOf="parent"
+                 app:layout_constraintTop_toBottomOf="@+id/input_url"
+                 app:layout_constraintBottom_toBottomOf="parent"
+                 app:layout_constraintHorizontal_bias="0.0"
+                 app:layout_constraintVertical_bias="1.0"/>-->
+        <WebView
+                android:id="@+id/web_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--<androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+        <Button
+                android:id="@+id/button_first"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/next"
+                app:layout_constraintBottom_toTopOf="@id/textview_first"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+                android:id="@+id/textview_first"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/lorem_ipsum"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button_first"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>-->
+</androidx.core.widget.NestedScrollView>
