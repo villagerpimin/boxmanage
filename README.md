@@ -2,7 +2,7 @@
 
 相关项目链接 [https://github.com/CHIZI-0618/box4magisk](https://github.com/CHIZI-0618/box4magisk)
 
-自用app, 内置了box4manage的部分常用操作
+自用app, 内置了box4magisk的部分常用操作
 
 ## 前置条件
 
