@@ -9,6 +9,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import android.view.MotionEvent
 import android.webkit.WebView
 import com.google.android.material.snackbar.Snackbar
 import work.pimin.boxmanage.databinding.ActivityMainBinding
@@ -32,15 +33,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        // 右下角点击事件
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "是否刷新?", Snackbar.LENGTH_LONG) // Replace with your own action
-                .setAction("确定") {
-                    val webContent = binding.root.findViewById<WebView>(R.id.web_content)
-                    //webContent.loadUrl("https://www.example.com")
-                    webContent.reload()
-                }.show()
-        }
+        fabBtn()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -56,26 +49,47 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             // 查看运行状态
             R.id.action_status -> {
-                val result = executeShellCommand("/data/adb/box/scripts/box.service status")
-                //showAlert(result)
+                executeShellCommand("/data/adb/box/scripts/box.service status")
                 true
             }
-            // 重启服务
+            // 重启核心
             R.id.action_restart_service -> {
-                val result = executeShellCommand("/data/adb/box/scripts/box.service restart")
-                //showAlert(result)
+                executeShellCommand("/data/adb/box/scripts/box.service restart")
                 true
             }
             // 重载TProxy服务
             R.id.action_restart_tproxy -> {
-                val res = executeShellCommand("/data/adb/box/scripts/box.tproxy restart")
-                //showAlert(res)
+                executeShellCommand("/data/adb/box/scripts/box.tproxy restart")
                 true
             }
+            // 停止核心
+            R.id.action_stop_service -> {
+                executeShellCommand("/data/adb/box/scripts/box.service stop")
+                true
+            }
+            // 停止代理
+            R.id.action_stop_tproxy -> {
+                executeShellCommand("/data/adb/box/scripts/box.tproxy stop")
+                true
+            }
+            /*// 编辑文件
+            R.id.action_edit_files -> {
+                showAlert("点击了编辑文件")
+//                val intent = Intent(this, FileListActivity::class.java)
+//                intent.putExtra("FILE_PATH", "/storage/emulated/0/Download")
+//                startActivity(intent)
+                true
+            }
+            // 修改代理应用
+            R.id.action_edit_app_proxy -> {
+                showAlert("修改代理应用")
+                true
+            }*/
             else -> super.onOptionsItemSelected(item)
         }
     }
 
+    /** 执行命令并弹窗进度 */
     private fun executeShellCommand(command: String) {
         // 创建AlertDialog
         val dialogBuilder = AlertDialog.Builder(this)
@@ -150,5 +164,65 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
+    }
+
+    /** 右下角操作键处理 */
+    private fun fabBtn(){
+        val fab = binding.fab
+
+        // 点击刷新
+        fab.setOnClickListener { view ->
+            Snackbar.make(view, "是否刷新?", Snackbar.LENGTH_LONG) // Replace with your own action
+                .setAction("确定") {
+                    val webContent = binding.root.findViewById<WebView>(R.id.web_content)
+                    if (webContent.url?.contains("127.0.0.1") == true){
+                        webContent.reload()
+                    } else{
+                        webContent.loadUrl(getString(R.string.webui_link))
+                    }
+
+                }.show()
+        }
+
+        // 可拖动
+        var dX = 0f
+        var dY = 0f
+        var isDragging = false
+        val touchSlop = 20 // 设置触摸移动的阈值
+
+        fab.setOnTouchListener { view, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    dX = view.x - event.rawX
+                    dY = view.y - event.rawY
+                    isDragging = false
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    val newX = event.rawX + dX
+                    val newY = event.rawY + dY
+
+                    // 计算移动的距离
+                    if (Math.abs(newX - view.x) > touchSlop || Math.abs(newY - view.y) > touchSlop) {
+                        isDragging = true // 更改状态为正在拖动
+                    }
+
+                    view.animate()
+                        .x(newX)
+                        .y(newY)
+                        .setDuration(0)
+                        .start()
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    if (!isDragging) {
+                        // 如果没有拖动，则触发点击事件
+                        view.performClick()
+                    }
+                    true
+                }
+                else -> false
+            }
+        }
     }
 }

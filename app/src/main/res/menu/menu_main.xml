@@ -14,4 +14,23 @@
           android:title="@string/action_restart_tproxy"
           android:orderInCategory="100"
           app:showAsAction="never"/>
+    <item android:id="@+id/action_stop_service"
+          android:title="@string/action_stop_service"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+    <item android:id="@+id/action_stop_tproxy"
+          android:title="@string/action_stop_tproxy"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+    <!--左侧按钮-->
+    <!--<item
+            android:id="@+id/action_edit_files"
+            android:title="@string/action_file_edit"
+            android:icon="@drawable/ic_action_name"
+            app:showAsAction="ifRoom" />
+    <item
+            android:id="@+id/action_edit_app_proxy"
+            android:title="@string/action_proxy_app"
+            android:icon="@drawable/ic_black_apps"
+            app:showAsAction="ifRoom" />-->
 </menu>

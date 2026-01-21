@@ -2,10 +2,16 @@
     <string name="app_name">Box Manage</string>
     <!--菜单项-->
     <string name="action_status">运行状态</string>
-    <string name="action_restart_service">重启服务</string>
-    <string name="action_restart_tproxy">重载透明代理</string>
+    <string name="action_restart_service">重启核心</string>
+    <string name="action_restart_tproxy">重载代理</string>
+    <string name="action_stop_service">停止核心</string>
+    <string name="action_stop_tproxy">停止代理</string>
+    <string name="action_file_edit">文件</string>
+    <string name="action_proxy_app">代理应用</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">Box Manage</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="webui_link">http://127.0.0.1:9090/ui</string>
+    <string name="title_activity_file_list">FileListActivity</string>
 </resources>

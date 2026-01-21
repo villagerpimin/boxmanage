@@ -1,17 +1,13 @@
 package work.pimin.boxmanage
 
-import android.content.Context
 import android.net.http.SslError
 import android.os.Bundle
-import android.util.DisplayMetrics
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.webkit.*
-import androidx.core.content.ContextCompat.getSystemService
 import work.pimin.boxmanage.databinding.FragmentFirstBinding
 
 /**
@@ -96,7 +92,7 @@ class FirstFragment : Fragment() {
         webContent.clearHistory()
 
         // 加载 URL
-        var url: String = "http://127.0.0.1:9090/ui" //  binding.inputUrl.text.toString()
+        var url: String = getString(R.string.webui_link) //  binding.inputUrl.text.toString()
         webContent.loadUrl(url)
 
 
